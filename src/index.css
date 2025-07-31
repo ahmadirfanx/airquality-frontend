@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Air Quality App Design System - Dark Mode with Glassmorphism */
+@layer base {
+  :root {
+    /* Dark theme color palette */
+    --background: 0 0% 4%;
+    --background-secondary: 0 0% 6%;
+    --foreground: 0 0% 95%;
+
+    /* Glass morphism surfaces */
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-hover: rgba(255, 255, 255, 0.08);
+
+    /* Accent colors */
+    --primary: 214 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: rgba(59, 130, 246, 0.5);
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 214 100% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-glow: rgba(16, 185, 129, 0.5);
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-glow: rgba(239, 68, 68, 0.5);
+
+    --warning: 48 96% 53%;
+    --warning-foreground: 0 0% 9%;
+
+    /* Interactive elements */
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.05);
+    --ring: 214 100% 59%;
+
+    /* Card and surface elements */
+    --card: rgba(255, 255, 255, 0.03);
+    --card-foreground: 0 0% 95%;
+
+    --popover: rgba(0, 0, 0, 0.8);
+    --popover-foreground: 0 0% 95%;
+
+    /* Design system variables */
+    --radius: 16px;
+    --blur: 10px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Gradients */
+    --gradient-bg: linear-gradient(135deg, hsl(0, 0%, 4%) 0%, hsl(0, 0%, 7%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(214, 100%, 59%) 0%, hsl(214, 100%, 50%) 100%);
+
+    /* Shadows */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --shadow-glow: 0 0 20px var(--primary-glow);
+    --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+
+    /* Sidebar specific */
+    --sidebar-background: rgba(0, 0, 0, 0.6);
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 214 100% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: rgba(255, 255, 255, 0.05);
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-ring: 214 100% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-all duration-200;
+  }
+
+  html {
+    @apply bg-background text-foreground;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+
+  /* Monospace for data/numbers */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Glass Morphism Components */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button {
+    @apply relative overflow-hidden rounded-xl backdrop-blur-sm;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+  }
+
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glass-input {
+    @apply rounded-xl backdrop-blur-sm;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+  }
+
+  .glass-input:focus {
+    @apply border-primary/50 outline-none ring-2 ring-primary/20;
+  }
+
+  /* Interactive Effects */
+  .interactive-glow:hover {
+    box-shadow: 0 0 20px var(--primary-glow);
+  }
+
+  .success-glow:hover {
+    box-shadow: 0 0 20px var(--success-glow);
+  }
+
+  .destructive-glow:hover {
+    box-shadow: 0 0 20px var(--destructive-glow);
+  }
+
+  /* Animated Background Particles */
+  .particles-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Loading States */
+  .skeleton {
+    @apply animate-pulse rounded;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Chart Tooltips */
+  .chart-tooltip {
+    @apply glass-card p-3 text-sm;
+    border-color: rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Focus styles */
+  .focus-ring:focus {
+    @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
