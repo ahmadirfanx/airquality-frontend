@@ -5,7 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Air Quality App Design System - Dark Mode with Glassmorphism */
+/* Air Quality App Design System  */
 @layer base {
   :root {
     /* Dark theme color palette */
@@ -19,23 +19,23 @@
     --glass-hover: rgba(255, 255, 255, 0.08);
 
     /* Accent colors */
-    --primary: 214 100% 59%;
+    --primary: 0 0% 100%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: rgba(59, 130, 246, 0.5);
+    --primary-glow: rgba(220, 220, 255, 0.6);
 
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 50%;
+    --muted-foreground: 0 0% 100%;
 
-    --accent: 214 100% 59%;
+    --accent: 280 100% 70%;
     --accent-foreground: 0 0% 100%;
 
     /* Status colors */
-    --success: 142 76% 36%;
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
-    --success-glow: rgba(16, 185, 129, 0.5);
+    --success-glow: rgba(6, 182, 212, 0.6);
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -47,7 +47,7 @@
     /* Interactive elements */
     --border: rgba(255, 255, 255, 0.1);
     --input: rgba(255, 255, 255, 0.05);
-    --ring: 214 100% 59%;
+    --ring: 214 100% 89%;
 
     /* Card and surface elements */
     --card: rgba(255, 255, 255, 0.03);
@@ -61,15 +61,17 @@
     --blur: 10px;
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Gradients */
-    --gradient-bg: linear-gradient(135deg, hsl(0, 0%, 4%) 0%, hsl(0, 0%, 7%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(214, 100%, 59%) 0%, hsl(214, 100%, 50%) 100%);
+    /* Gradients  */
+    --gradient-bg: linear-gradient(135deg, hsl(0, 0%, 3%) 0%, hsl(250, 100%, 8%) 25%, hsl(280, 100%, 4%) 50%, hsl(0, 0%, 5%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(250, 100%, 24%) 0%, hsl(280, 93%, 73%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(250, 39%, 31%) 0%, hsl(280, 100%, 70%) 50%, hsl(160, 84%, 39%) 100%);
 
-    /* Shadows */
-    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --shadow-glow: 0 0 20px var(--primary-glow);
-    --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    /* Shadows  */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 30px var(--primary-glow);
+    --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    --shadow-colored: 0 8px 32px 0 rgba(99, 102, 241, 0.15);
 
     /* Sidebar specific */
     --sidebar-background: rgba(0, 0, 0, 0.6);
@@ -109,10 +111,10 @@
   /* Glass Morphism Components */
   .glass-card {
     @apply relative overflow-hidden rounded-2xl;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-glass);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-glass), var(--shadow-colored);
   }
 
   .glass-card-hover {
@@ -161,7 +163,7 @@
     box-shadow: 0 0 20px var(--destructive-glow);
   }
 
-  /* Animated Background Particles */
+  /* Animated Background */
   .particles-bg::before {
     content: '';
     position: absolute;
@@ -170,10 +172,11 @@
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
-    animation: float 6s ease-in-out infinite;
+      radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 60% 70%, rgba(99, 102, 241, 0.06) 0%, transparent 40%);
+    animation: float 8s ease-in-out infinite;
     pointer-events: none;
   }
 

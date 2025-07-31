@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   AirQualityMeasurement,
   IngestionJob,
+  IngestionStatusResponse,
   TimeSeriesData,
   StatisticsData,
   DateRange,
@@ -52,8 +53,18 @@ export const airQualityApi = {
 
   // Check ingestion status
   getIngestionStatus: async (jobId: string): Promise<IngestionJob> => {
-    const response = await api.get<IngestionJob>(`/api/ingest/status/${jobId}`);
-    return response.data;
+    const response = await api.get<IngestionStatusResponse>(`/api/ingest/status/${jobId}`);
+    // Transform API response to internal format
+    return {
+      jobId: response.data.data.jobId,
+      status: response.data.data.state,
+      progress: {
+        processed: 0, // These would come from actual API if available
+        total: 100,
+        percentage: response.data.data.state === 'completed' ? 100 : 
+                   response.data.data.state === 'processing' ? 50 : 0
+      }
+    };
   },
 
   // Get time series data

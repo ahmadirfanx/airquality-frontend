@@ -17,13 +17,13 @@ const ProcessingPage = () => {
   const { data: status, isLoading, error, refetch } = useIngestionStatus(jobId);
 
   useEffect(() => {
-    if (status?.state === 'completed') {
+    if (status?.status === 'completed') {
       const timer = setTimeout(() => {
         navigate('/dashboard');
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [status?.state, navigate]);
+  }, [status?.status, navigate]);
 
   if (!jobId) {
     return (
@@ -58,7 +58,7 @@ const ProcessingPage = () => {
       };
     }
 
-    switch (status?.state) {
+    switch (status?.status) {
       case 'processing':
         return {
           title: 'Processing Your Data',
@@ -103,7 +103,7 @@ const ProcessingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              {status?.state === 'completed' ? (
+              {status?.status === 'completed' ? (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -112,7 +112,7 @@ const ProcessingPage = () => {
                 >
                   <CheckCircle className="w-10 h-10 text-success" />
                 </motion.div>
-              ) : status?.state === 'failed' ? (
+              ) : status?.status === 'failed' ? (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -137,7 +137,7 @@ const ProcessingPage = () => {
 
               <p className="text-lg text-muted-foreground mb-8">
                 {statusInfo.description}
-                {status?.state === 'processing' && (
+                {status?.status === 'processing' && (
                   <span className="ml-2">
                     <LoadingDots className="inline-flex" />
                   </span>
@@ -165,7 +165,7 @@ const ProcessingPage = () => {
                 </motion.div>
               )}
 
-              {status?.state === 'completed' && (
+              {status?.status === 'completed' && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ const ProcessingPage = () => {
                 </motion.div>
               )}
 
-              {status?.state === 'failed' && (
+              {status?.status === 'failed' && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

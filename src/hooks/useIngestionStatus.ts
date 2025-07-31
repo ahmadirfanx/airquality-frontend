@@ -12,10 +12,10 @@ export const useIngestionStatus = (jobId: string | null, enabled = true) => {
     enabled: enabled && !!jobId,
     refetchInterval: (query) => {
       // Stop polling if job is completed or failed
-      if (!query.state.data || query.state.data.state === 'completed' || query.state.data.state === 'failed') {
+      if (!query.state.data || query.state.data.status === 'completed' || query.state.data.status === 'failed') {
         return false;
       }
-      return POLLING_INTERVALS.ingestion;
+      return 1000; // Poll every second as requested
     },
     retry: (failureCount, error: any) => {
       // Don't retry if job not found (404)

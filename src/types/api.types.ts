@@ -17,8 +17,8 @@ export interface AirQualityMeasurement {
 
 export interface IngestionJob {
   jobId: string;
-  state: 'processing' | 'completed' | 'failed';
-  progress: {
+  status: 'processing' | 'completed' | 'failed';
+  progress?: {
     processed: number;
     total: number;
     percentage: number;
@@ -26,6 +26,17 @@ export interface IngestionJob {
   error?: string;
   startTime?: string;
   endTime?: string;
+}
+
+// Response wrapper from API
+export interface IngestionStatusResponse {
+  success: boolean;
+  message: string;
+  data: {
+    jobId: string;
+    state: 'processing' | 'completed' | 'failed';
+    trackingUrl: string;
+  };
 }
 
 export interface TimeSeriesData {
@@ -57,8 +68,11 @@ export interface ApiResponse<T> {
 }
 
 export interface UploadResponse {
-  jobId: string;
+  success: boolean;
   message: string;
+  data: {
+    jobId: string;
+  };
 }
 
 export interface HealthCheck {
