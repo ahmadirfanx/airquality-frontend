@@ -94,18 +94,6 @@ export const Header = ({
           </motion.div>
 
           <div className="flex items-center space-x-2">
-            {onRefresh && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={onRefresh}
-                className="glass-button"
-              >
-                <RefreshCw className="w-4 h-4" />
-                <span className="hidden sm:ml-2 sm:inline">Refresh</span>
-              </Button>
-            )}
-
             <Button
               variant="outline"
               size="sm"
