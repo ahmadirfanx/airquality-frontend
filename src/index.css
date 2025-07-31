@@ -204,6 +204,16 @@
     background: rgba(255, 255, 255, 0.3);
   }
 
+  .chart-tooltip {
+    background: rgba(15, 23, 42, 0.95);
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+
   /* Loading States */
   .skeleton {
     @apply animate-pulse rounded;
