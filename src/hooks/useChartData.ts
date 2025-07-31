@@ -103,10 +103,8 @@ export const useChartData = (
       return null;
     }
 
-    statisticsData?.map((receivedData) => receivedData?.data);
-
     const total = statisticsData.reduce(
-      (acc, stat) => acc + (stat.avg || stat.average || 0),
+      (acc, stat: any) => acc + (stat?.data?.avg || stat?.data?.average || 0),
       0
     );
     return total / statisticsData.length;

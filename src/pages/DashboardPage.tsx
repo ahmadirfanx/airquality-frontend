@@ -112,7 +112,7 @@ const DashboardPage = () => {
               color="#10b981"
             />
             <StatisticsCard
-              title="Time Range"
+              title="Date Range"
               value={
                 dateRange.start && dateRange.end
                   ? Math.ceil(
@@ -129,7 +129,6 @@ const DashboardPage = () => {
               title="Avg Quality"
               value={averageQuality}
               unit="%"
-              change={2.3}
               changeType="increase"
               icon={<div className="w-4 h-4 bg-accent rounded-full" />}
               color="#8b5cf6"

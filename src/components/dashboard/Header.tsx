@@ -106,18 +106,6 @@ export const Header = ({
               </Button>
             )}
 
-            {onExport && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={onExport}
-                className="glass-button"
-              >
-                <Download className="w-4 h-4" />
-                <span className="hidden sm:ml-2 sm:inline">Export</span>
-              </Button>
-            )}
-
             <Button
               variant="outline"
               size="sm"

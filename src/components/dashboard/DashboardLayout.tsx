@@ -39,7 +39,6 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   };
 
   return (
-    <AnimatedBackground variant="subtle" className="min-h-screen">
       <div className="flex flex-col h-screen">
         {/* Header */}
         <Header
@@ -47,7 +46,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           onSidebarToggle={() => setSidebarOpen(!sidebarOpen)}
           onRefresh={handleRefresh}
           onExport={handleExport}
-          className="sticky top-0 z-50 p-4"
+          className="sticky top-0 z-100 p-4"
         />
 
         <div className="flex flex-1 overflow-hidden">
@@ -61,7 +60,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className={cn(
                   "fixed lg:relative inset-y-0 left-0 z-40",
-                  "w-80 bg-background/80 backdrop-blur-sm",
+                  "w-90 bg-background/80 backdrop-blur-sm",
                   "border-r border-white/10 lg:border-0",
                   "p-4 overflow-y-auto custom-scrollbar"
                 )}
@@ -96,6 +95,5 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           )}
         </AnimatePresence>
       </div>
-    </AnimatedBackground>
   );
 };
